@@ -1,0 +1,65 @@
+# ---------- 环境变量与密钥（绝不入库）----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secret.key
+
+# ---------- 数据库 ----------
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- 人脸抓拍与加密存储：真实隐私数据，绝不入库 ----------
+storage/
+backend/storage/
+faces/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ---------- Node 与前端 ----------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.tsbuildinfo
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+.arts/
+.codeartsdoer/
+*.code-workspace
+
+# ---------- 调试与构建残留 ----------
+artifacts/
+diag*.mjs
+diag*.png
+vite.config.js.timestamp-*
+*.log
+logs/
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini

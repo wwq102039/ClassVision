@@ -1,0 +1,367 @@
+/**
+ * 智课眼（ClassVision）微交互动画工具类
+ * 
+ * 本文件定义了所有动画效果，包括悬停过渡、入场动画、加载动画等。
+ * 所有动画时长控制在 200-500ms，避免闪烁和卡顿。
+ */
+
+// ============================================================
+// 悬停过渡动画
+// ============================================================
+
+/** 基础悬停过渡 - 100-200ms */
+.hover-transition(@duration: 150ms) {
+  transition: all @duration @hover-easing;
+}
+
+/** 颜色过渡 */
+.hover-color-transition(@duration: 150ms) {
+  transition: color @duration @hover-easing, background-color @duration @hover-easing;
+}
+
+/** 阴影过渡 */
+.hover-shadow-transition(@duration: 150ms) {
+  transition: box-shadow @duration @hover-easing, transform @duration @hover-easing;
+}
+
+/** 变换过渡 */
+.hover-transform-transition(@duration: 150ms) {
+  transition: transform @duration @hover-easing;
+}
+
+// ============================================================
+// 卡片悬浮效果
+// ============================================================
+
+/** 卡片悬浮 - 阴影 + 位移 */
+.card-hover() {
+  .hover-shadow-transition(200ms);
+  
+  &:hover {
+    box-shadow: @shadow-hover;
+    transform: translateY(-2px);
+  }
+}
+
+/** 卡片悬浮 - 仅阴影 */
+.card-hover-shadow() {
+  .hover-shadow-transition(200ms);
+  
+  &:hover {
+    box-shadow: @shadow-hover;
+  }
+}
+
+/** 卡片悬浮 - 仅位移 */
+.card-hover-lift() {
+  .hover-transform-transition(200ms);
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// ============================================================
+// 入场动画工具类
+// ============================================================
+
+/** 淡入动画 */
+.fade-in(@duration: 300ms) {
+  animation: fadeIn @duration ease-out forwards;
+}
+
+/** 从下方滑入动画 */
+.slide-up(@duration: 300ms) {
+  animation: slideUp @duration ease-out forwards;
+}
+
+/** 从上方滑入动画 */
+.slide-down(@duration: 300ms) {
+  animation: slideDown @duration ease-out forwards;
+}
+
+/** 从左侧滑入动画 */
+.slide-left(@duration: 300ms) {
+  animation: slideLeft @duration ease-out forwards;
+}
+
+/** 从右侧滑入动画 */
+.slide-right(@duration: 300ms) {
+  animation: slideRight @duration ease-out forwards;
+}
+
+/** 缩放弹入动画 */
+.scale-in(@duration: 300ms) {
+  animation: scaleIn @duration ease-out forwards;
+}
+
+// ============================================================
+// 加载动画
+// ============================================================
+
+/** 脉冲动画 */
+.pulse(@duration: 1.5s) {
+  animation: pulse @duration ease-in-out infinite;
+}
+
+/** 旋转动画 */
+.spin(@duration: 1s) {
+  animation: spin @duration linear infinite;
+}
+
+/** 骨架屏闪烁 */
+.skeleton-blink(@duration: 1.5s) {
+  animation: skeletonBlink @duration ease-in-out infinite;
+}
+
+// ============================================================
+// 空状态动画
+// ============================================================
+
+/** 弹跳动画 */
+.bounce(@duration: 1s) {
+  animation: bounce @duration ease-in-out infinite;
+}
+
+/** 摇摆动画 */
+.shake(@duration: 0.5s) {
+  animation: shake @duration ease-in-out;
+}
+
+// ============================================================
+// 反馈动画
+// ============================================================
+
+/** 点击波纹效果 */
+.click-ripple(@duration: 0.6s, @color: @color-primary) {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: @color;
+    opacity: 0.3;
+    transform: translate(-50%, -50%);
+    animation: ripple @duration ease-out forwards;
+  }
+}
+
+/** 成功勾选动画 */
+.check-spring(@duration: 0.4s) {
+  animation: checkSpring @duration ease-out forwards;
+}
+
+// ============================================================
+// 表格行入场动画
+// ============================================================
+
+/** 表格行依次入场 */
+.table-row-enter(@stagger-delay: 50ms) {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rowEnter 300ms ease-out forwards;
+  
+  // 使用 Less 循环生成延迟
+  @n: 1;
+  .loop() when (@n <= 20) {
+    &:nth-child(@{n}) {
+      animation-delay: (@n - 1) * @stagger-delay;
+    }
+    @n: @n + 1;
+    .loop();
+  }
+  .loop();
+}
+
+// ============================================================
+// 工具类
+// ============================================================
+
+/** 动画延迟工具类 */
+.animation-delay(@delay) {
+  animation-delay: @delay;
+}
+
+/** 动画时长工具类 */
+.animation-duration(@duration) {
+  animation-duration: @duration;
+}
+
+/** 动画填充模式 */
+.animation-fill(@fill: forwards) {
+  animation-fill-mode: @fill;
+}
+
+/** 隐藏元素但保留动画空间 */
+.animate-hidden() {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/** 显示元素 */
+.animate-visible() {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+// ============================================================
+// 响应式动画优化
+// ============================================================
+
+/** 减少动画 - 无障碍支持 */
+.reduce-motion() {
+  @media (prefers-reduced-motion: reduce) {
+    // Never set transition-duration on `*`: its default transition-property is
+    // `all`, so even 0.01ms animates popup left/top during rc-trigger measurement.
+    // That makes Select/DatePicker oscillate off-screen. Scope to our effects.
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-slide-down,
+    .animate-scale-in,
+    .animate-pulse,
+    .card-hoverable {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition: none !important;
+    }
+  }
+}
+
+// 默认应用无障碍支持
+.reduce-motion();
+
+// ============================================================
+// 关键帧动画定义（标准 CSS 语法）
+// ============================================================
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes skeletonBlink {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.3;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+@keyframes checkSpring {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rowEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

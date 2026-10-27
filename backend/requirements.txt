@@ -1,0 +1,24 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+sqlalchemy>=2.0
+pydantic>=2.6
+python-multipart>=0.0.9
+onnxruntime>=1.17
+opencv-python-headless>=4.9
+numpy>=1.24
+cryptography>=42.0
+pyjwt>=2.8
+openpyxl>=3.1
+pillow>=10.2
+loguru>=0.7
+python-dotenv>=1.0
+# AI 语音助手（小智桥接 + 本地 MCP 工具）
+websockets>=15,<18
+opuslib>=3.0.1
+fastmcp>=2,<3
+mcp-proxy>=0.8,<1
+# 可选增强（人脸身份识别，非 MVP 必需）：
+#   insightface 需配合 numpy<2 环境；安装后系统自动启用高精度人脸识别，否则回退降级特征方案。
+# insightface>=0.7.3
+# face_recognition（依赖 dlib，Windows 编译成本高）
+# ultralytics>=8.2（仅 PT 后端调试用）

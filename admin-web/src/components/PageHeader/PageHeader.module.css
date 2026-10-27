@@ -1,0 +1,137 @@
+/**
+ * PageHeader 页面标题样式
+ * 使用 CSS Modules 实现样式隔离
+ */
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* 顶部行 */
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+/* 左侧区域 */
+.leftArea {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+  min-width: 0;
+}
+
+/* 返回按钮 */
+.backButton {
+  padding: 0 var(--spacing-xs);
+  color: rgba(0, 0, 0, 0.65);
+  transition: color var(--hover-duration) var(--hover-easing);
+}
+
+.backButton:hover {
+  color: var(--color-primary);
+}
+
+/* 面包屑 */
+.breadcrumb {
+  font-size: var(--font-body);
+}
+
+/* 右侧操作区 */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+/* 标题行 */
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* 标题骨架屏 */
+.titleSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.titleSkeletonInput {
+  width: 200px;
+}
+
+.subtitleSkeletonInput {
+  width: 300px;
+}
+
+/* 标题 */
+.title {
+  margin: 0 !important;
+  font-size: var(--font-h2) !important;
+  font-weight: var(--font-h2-weight) !important;
+  line-height: var(--font-h2-line-height) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 副标题 */
+.subtitle {
+  margin: 0 !important;
+  font-size: var(--font-body) !important;
+  line-height: var(--font-body-line-height) !important;
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ============================================================
+ * 响应式适配
+ * ============================================================ */
+
+/* 小屏幕适配（< 768px） */
+@media (max-width: 767px) {
+  .pageHeader {
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .title {
+    font-size: 20px !important;
+  }
+  
+  .subtitle {
+    font-size: 13px !important;
+  }
+  
+  .subtitleSkeletonInput {
+    width: 200px;
+  }
+}
+
+/* 中屏幕适配（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pageHeader {
+    gap: var(--spacing-md);
+  }
+  
+  .title {
+    font-size: 22px !important;
+  }
+}

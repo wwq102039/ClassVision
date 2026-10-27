@@ -1,0 +1,129 @@
+/**
+ * StatCard 统计卡片样式
+ * 使用 CSS Modules 实现样式隔离
+ */
+
+.statCard {
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--hover-duration) var(--hover-easing),
+              transform var(--hover-duration) var(--hover-easing);
+  cursor: default;
+  overflow: hidden;
+}
+
+/* 可点击状态 */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* 内容区域 */
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* 图标容器 */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-card);
+  flex-shrink: 0;
+}
+
+.iconWrapper :global(svg) {
+  width: 24px;
+  height: 24px;
+}
+
+/* 文本容器 */
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  flex: 1;
+}
+
+/* 标题 */
+.title {
+  font-size: var(--font-body);
+  line-height: var(--font-body-line-height);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 数值容器 */
+.valueWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+/* 数值 */
+.value {
+  margin: 0 !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+/* 骨架屏 */
+.skeleton {
+  width: 80px;
+  height: 28px;
+}
+
+/* 趋势图标 */
+.trendIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+ * 响应式适配
+ * ============================================================ */
+
+/* 小屏幕适配（< 768px） */
+@media (max-width: 767px) {
+  .statCard {
+    padding: var(--spacing-sm);
+  }
+  
+  .content {
+    gap: var(--spacing-sm);
+  }
+  
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .value {
+    font-size: 20px !important;
+  }
+}
+
+/* 中屏幕适配（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .statCard {
+    padding: var(--spacing-md);
+  }
+  
+  .value {
+    font-size: 22px !important;
+  }
+}

@@ -1,0 +1,137 @@
+/**
+ * EnhancedTable 增强表格样式
+ * 使用 CSS Modules 实现样式隔离
+ */
+
+.enhancedTable {
+  background: #fff;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+/* 表格主体 */
+.table {
+  width: 100%;
+}
+
+/* 表头 */
+.table :global(.ant-table-thead) > tr > th {
+  background: #fafafa !important;
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+  font-size: var(--font-body) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  white-space: nowrap;
+}
+
+/* 表头悬停 */
+.table :global(.ant-table-thead) > tr > th:hover {
+  background: #f5f5f5 !important;
+}
+
+/* 行 */
+.table :global(.ant-table-tbody) > tr > td {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  font-size: var(--font-body) !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  transition: background-color var(--hover-duration) var(--hover-easing);
+}
+
+/* 行高 */
+.table :global(.ant-table-tbody) > tr {
+  height: 48px !important;
+}
+
+/* 行悬停 */
+.table :global(.ant-table-tbody) > tr:hover > td {
+  background: rgba(24, 144, 255, 0.03) !important;
+}
+
+/* 可点击行 */
+.clickableRow {
+  cursor: pointer;
+}
+
+.clickableRow:hover {
+  background: rgba(24, 144, 255, 0.05) !important;
+}
+
+/* 分页 */
+.table :global(.ant-table-pagination) {
+  padding: 16px !important;
+  margin: 0 !important;
+  border-top: 1px solid #f0f0f0 !important;
+}
+
+/* 空状态容器 */
+.table :global(.ant-table-placeholder) {
+  padding: 48px 16px !important;
+}
+
+/* ============================================================
+ * 响应式适配
+ * ============================================================ */
+
+/* 小屏幕适配（< 768px） */
+@media (max-width: 767px) {
+  .enhancedTable {
+    border-radius: 0;
+  }
+  
+  .table :global(.ant-table-thead) > tr > th,
+  .table :global(.ant-table-tbody) > tr > td {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+  
+  .table :global(.ant-table-tbody) > tr {
+    height: 44px !important;
+  }
+  
+  .table :global(.ant-table-pagination) {
+    padding: 12px !important;
+  }
+}
+
+/* 中屏幕适配（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .table :global(.ant-table-thead) > tr > th,
+  .table :global(.ant-table-tbody) > tr > td {
+    padding: 10px 14px !important;
+  }
+  
+  .table :global(.ant-table-tbody) > tr {
+    height: 46px !important;
+  }
+}
+
+/* ============================================================
+ * 暗色模式适配
+ * ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .enhancedTable {
+    background: #1d1d1d;
+  }
+  
+  .table :global(.ant-table-thead) > tr > th {
+    background: #2d2d2d !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-bottom-color: #3d3d3d !important;
+  }
+  
+  .table :global(.ant-table-tbody) > tr > td {
+    color: rgba(255, 255, 255, 0.65) !important;
+    border-bottom-color: #3d3d3d !important;
+  }
+  
+  .table :global(.ant-table-tbody) > tr:hover > td {
+    background: rgba(24, 144, 255, 0.08) !important;
+  }
+  
+  .table :global(.ant-table-pagination) {
+    border-top-color: #3d3d3d !important;
+  }
+}

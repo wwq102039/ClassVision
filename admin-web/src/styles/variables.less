@@ -1,0 +1,122 @@
+/**
+ * 智课眼（ClassVision）Less 变量定义
+ * 
+ * 本文件定义 Less 变量供样式文件使用，与 theme.ts 中的设计令牌保持一致。
+ * 使用方式：在 .less 文件中通过 @import 引入此文件
+ */
+
+// ============================================================
+// 品牌色板
+// ============================================================
+
+@color-primary: #1890ff;           // 品牌主色 - AntD 蓝
+@color-primary-bg: rgba(24, 144, 255, 0.1);  // 主色浅色背景
+@color-primary-hover: #40a9ff;     // 主色悬停
+@color-primary-active: #096dd9;    // 主色激活
+
+// ============================================================
+// 语义化色板
+// ============================================================
+
+@color-success: #52c41a;           // 成功色 - 绿色
+@color-success-bg: rgba(82, 196, 26, 0.1);
+
+@color-warning: #faad14;           // 警告色 - 橙黄
+@color-warning-bg: rgba(250, 173, 20, 0.1);
+
+@color-error: #ff4d4f;             // 错误色 - 红色
+@color-error-bg: rgba(255, 77, 79, 0.1);
+
+@color-info: #1890ff;              // 信息色 - 蓝色
+@color-info-bg: rgba(24, 144, 255, 0.1);
+
+// ============================================================
+// 字体层级
+// ============================================================
+
+@font-h1: 28px;                    // 页面标题
+@font-h1-weight: 600;
+@font-h1-line-height: 1.4;
+
+@font-h2: 22px;                    // 副标题
+@font-h2-weight: 600;
+@font-h2-line-height: 1.4;
+
+@font-h3: 16px;                    // 卡片标题
+@font-h3-weight: 500;
+@font-h3-line-height: 1.5;
+
+@font-body: 14px;                  // 正文
+@font-body-weight: 400;
+@font-body-line-height: 1.6;
+
+@font-caption: 12px;               // 辅助文字
+@font-caption-weight: 400;
+@font-caption-line-height: 1.5;
+
+// ============================================================
+// 间距阶梯
+// ============================================================
+
+@spacing-xs: 4px;                  // 紧凑间距
+@spacing-sm: 8px;                  // 小间距
+@spacing-md: 16px;                 // 中等间距
+@spacing-lg: 24px;                 // 大间距
+@spacing-xl: 32px;                 // 较大间距
+@spacing-xxl: 48px;                // 大区块间距
+
+// ============================================================
+// 圆角规范
+// ============================================================
+
+@radius-button: 6px;               // 按钮圆角
+@radius-card: 8px;                 // 卡片圆角
+@radius-input: 6px;                // 输入框圆角
+@radius-dropdown: 6px;             // 下拉框圆角
+@radius-badge: 999px;              // 徽章/标签圆角
+
+// ============================================================
+// 阴影规范
+// ============================================================
+
+@shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);    // 卡片默认阴影
+@shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);  // 悬浮阴影
+@shadow-modal: 0 8px 24px rgba(0, 0, 0, 0.15);  // 模态框阴影
+
+// ============================================================
+// 动画规范
+// ============================================================
+
+@hover-duration: 150ms;            // 悬停过渡时长
+@hover-easing: ease-in-out;        // 悬停缓动函数
+@enter-duration: 300ms;            // 入场动画时长
+@loading-duration: 800ms;          // 加载动画时长
+
+// ============================================================
+// 组件专用变量
+// ============================================================
+
+// 统计卡片
+@stat-card-value-font-size: 24px;
+@stat-card-value-font-weight: 600;
+@stat-card-icon-bg-opacity: 0.1;
+@stat-card-hover-translate: -2px;
+
+// 表格
+@table-header-bg: #fafafa;
+@table-row-height: 48px;
+@table-row-hover-bg: rgba(24, 144, 255, 0.03);
+
+// 侧边导航
+@sidebar-width: 208px;
+@sidebar-collapsed-width: 80px;
+@sidebar-item-hover-bg: rgba(24, 144, 255, 0.08);
+@sidebar-item-selected-bar-width: 3px;
+
+// 顶栏
+@header-height: 56px;
+@header-title-font-weight: 600;
+
+// 页面标题
+@page-header-title-font-size: 20px;
+@page-header-subtitle-color: rgba(0, 0, 0, 0.45);

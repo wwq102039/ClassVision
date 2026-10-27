@@ -1,0 +1,127 @@
+/**
+ * EmptyState 空状态样式
+ * 使用 CSS Modules 实现样式隔离
+ */
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: var(--spacing-xl);
+  animation: fadeIn var(--enter-duration) ease-out;
+}
+
+/* Result 组件覆盖 */
+.result {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 400px;
+}
+
+/* 插画 */
+.illustration {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: var(--spacing-md);
+}
+
+/* 自定义图标 */
+.customIcon {
+  font-size: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 默认图标 */
+.defaultIcon {
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-primary-bg);
+  margin-bottom: var(--spacing-md);
+}
+
+/* 标题容器 */
+.titleWrapper {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* 标题 */
+.title {
+  margin: 0 !important;
+  font-size: var(--font-h3) !important;
+  font-weight: var(--font-h3-weight) !important;
+  line-height: var(--font-h3-line-height) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 描述 */
+.description {
+  margin: 0 !important;
+  margin-bottom: var(--spacing-md) !important;
+  font-size: var(--font-body) !important;
+  line-height: var(--font-body-line-height) !important;
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* 操作按钮容器 */
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+ * 响应式适配
+ * ============================================================ */
+
+/* 小屏幕适配（< 768px） */
+@media (max-width: 767px) {
+  .emptyState {
+    padding: var(--spacing-lg);
+    min-height: 150px;
+  }
+  
+  .illustration {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .defaultIcon {
+    font-size: 36px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .customIcon {
+    font-size: 48px;
+  }
+  
+  .title {
+    font-size: 16px !important;
+  }
+  
+  .description {
+    font-size: 13px !important;
+  }
+}
+
+/* 中屏幕适配（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .emptyState {
+    padding: var(--spacing-xl);
+  }
+  
+  .illustration {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,95 @@
+/**
+ * StatusTag 状态标签样式
+ * 使用 CSS Modules 实现样式隔离
+ */
+
+.statusTag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 2px 8px;
+  font-size: var(--font-body);
+  line-height: 1.5;
+  border-radius: var(--radius-badge);
+  transition: opacity var(--hover-duration) var(--hover-easing);
+}
+
+/* 带圆点指示器 */
+.withDot {
+  padding-left: 4px;
+}
+
+/* 圆点 */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* 文本 */
+.text {
+  white-space: nowrap;
+}
+
+/* ============================================================
+ * 尺寸变体
+ * ============================================================ */
+
+/* 小尺寸 */
+.small {
+  font-size: var(--font-caption);
+  padding: 1px 6px;
+}
+
+.small .dot {
+  width: 4px;
+  height: 4px;
+}
+
+/* 中尺寸（默认） */
+.middle {
+  font-size: var(--font-body);
+  padding: 2px 8px;
+}
+
+.middle .dot {
+  width: 6px;
+  height: 6px;
+}
+
+/* 大尺寸 */
+.large {
+  font-size: var(--font-h3);
+  padding: 4px 12px;
+}
+
+.large .dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* ============================================================
+ * 悬停效果
+ * ============================================================ */
+
+.statusTag:hover {
+  opacity: 0.85;
+}
+
+/* ============================================================
+ * 响应式适配
+ * ============================================================ */
+
+/* 小屏幕适配（< 768px） */
+@media (max-width: 767px) {
+  .statusTag {
+    font-size: 12px;
+    padding: 1px 6px;
+  }
+  
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+}
